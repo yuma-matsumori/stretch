@@ -18,8 +18,15 @@ body {
 
 #app {
   height: auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  /* display: grid; */
+  /* display: flex; */
+  /* grid-template-columns: 1fr 1fr 1fr; */
+}
+
+.group {
+  width: auto;
+  display: flex;
+  list-style: none;
 }
 
 .text {
@@ -31,4 +38,14 @@ body {
   color: var(--txt-color);
   margin: 0;
   padding: 0;
+  animation :infinity-scroll-left 4s infinite linear 0.5s both;
+}
+
+@keyframes infinity-scroll-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
 }

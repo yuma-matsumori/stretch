@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900');
+:root {
+  --txt-size: 80px;
+  --txt-color: #fff;
+  --bg-color: #000;
+}
+
+body {
+  background-color: var(--bg-color);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  position: fixed;
+}
+
+#app {
+  height: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.text {
+  font-family: "Unbounded", cursive;
+  display: inline-block;
+  font-size: var(--txt-size);
+  letter-spacing: 0.05em;
+  line-height: 0.8em;
+  color: var(--txt-color);
+  margin: 0;
+  padding: 0;
+}

@@ -3,7 +3,6 @@
   --txt-size: 80px;
   --txt-color: #fff;
   --bg-color: #000;
-  --anim-speed: 4s;
 }
 
 body {
@@ -18,24 +17,23 @@ body {
 }
 
 #app {
-  width: fit-content;
-  height: fit-content;
+  width: 100vw;
+  height: 100vh;
 }
 
 .group {
   width: fit-content;
   height: fit-content;
   display: flex;
-  list-style: none;
+  /* font-size: var(--txt-size); */
+  font-family: "Unbounded", cursive;
+  letter-spacing: 0.05em;
+  line-height: 85%;
 }
 
 .text {
-  font-family: "Unbounded", cursive;
   display: inline-block;
-  font-size: var(--txt-size);
-  letter-spacing: 0.05em;
-  line-height: 0.8em;
-  color: var(--txt-color);
   margin: 0;
   padding: 0;
+  color: var(--txt-color);
 }

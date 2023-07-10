@@ -1,8 +1,8 @@
 "use strict";
 let mouseX = 0;
 let mouseY = 0;
-let TextWidth = 0;
-const Textheight = 64;
+const split = 8;
+const adjustFontSize =1.1764;
 const TargetElement = document.getElementById("app");
 
 const windowSizeCheck = () => {
@@ -13,7 +13,7 @@ const windowSizeCheck = () => {
 
 const HowManyToCreate = () => {
     return (
-        (windowSizeCheck().height / Textheight).toFixed(0)
+        Number((windowSizeCheck().height / split).toFixed(0))
     )
 };
 
@@ -26,35 +26,38 @@ const randomSpeed = () => {
     )
 }
 
-const GenerationText = (num) => {
-    console.log("num: " + num);
+const GenerationText = () => {
+    console.log("windowHeight: " + windowSizeCheck().height);
+    console.log("HowManyToCreate: " + HowManyToCreate());
     const base = 8;
-    for (var j = 0; j < num; j++) {
+    for (var j = 0; j < split; j++) {
         const group = document.createElement("div");
         group.classList.add("group");
         group.setAttribute("id", "G" + j);
         TargetElement.appendChild(group);
+        document.getElementById("G" + j).style.fontSize = (HowManyToCreate() * adjustFontSize) + "px";
+        //Animation
         document.getElementById("G" + j).animate([
-            // keyframes
             { transform: 'translateX(0)' },
             { transform: 'translateX(-25%)' }
         ], {
-            // timing options
             duration: randomSpeed(),
             iterations: Infinity
         });
-
+        //text
         for (var i = 0; i < base; i++) {
             const TextP = document.createElement("p");
             TextP.classList.add("text");
             TextP.textContent = "Bimyoo/YumaMatsumori/";
             group.appendChild(TextP);
-            TextWidth = TextP.clientWidth;
         };
     };
 };
 
-window.addEventListener("resize", (ResizeHeight) => {
+window.addEventListener("resize", () => {
+     for (var j = 0; j < split; j++) {
+        document.getElementById("G" + j).style.fontSize = (HowManyToCreate() * adjustFontSize) + "px";
+        }; 
 });
 
 window.addEventListener("mousemove", (event) => {
@@ -63,8 +66,8 @@ window.addEventListener("mousemove", (event) => {
     TargetElement.style.fontWeight = (mouseX / windowSizeCheck().width).toFixed(2) * 900;
 });
 
-GenerationText(HowManyToCreate());
+GenerationText();
 
 window.addEventListener("mouseover", (event) => {
-    console.log(event.target); //event.targetの部分がマウスオーバーされている要素になっています
+    //console.log(event.target);
   });

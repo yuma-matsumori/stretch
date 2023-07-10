@@ -3,6 +3,7 @@
   --txt-size: 80px;
   --txt-color: #fff;
   --bg-color: #000;
+  --anim-speed: 4s;
 }
 
 body {
@@ -17,16 +18,16 @@ body {
 }
 
 #app {
-  height: auto;
-  /* display: grid; */
-  /* display: flex; */
-  /* grid-template-columns: 1fr 1fr 1fr; */
+  width: fit-content;
+  height: fit-content;
 }
 
 .group {
-  width: auto;
+  width: fit-content;
+  height: fit-content;
   display: flex;
   list-style: none;
+  animation :infinity-scroll-left var(--anim-speed) infinite linear 0.5s both;
 }
 
 .text {
@@ -38,7 +39,6 @@ body {
   color: var(--txt-color);
   margin: 0;
   padding: 0;
-  animation :infinity-scroll-left 4s infinite linear 0.5s both;
 }
 
 @keyframes infinity-scroll-left {
@@ -46,6 +46,6 @@ body {
     transform: translateX(0);
   }
   to {
-    transform: translateX(-100%);
+    transform: translateX(-50%);
   }
 }

@@ -30,6 +30,7 @@ body {
   letter-spacing: 0.05em;
   line-height: 85%;
   transition: 0.25s;
+  font-weight: 100;
 }
 
 .text {

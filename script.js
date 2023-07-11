@@ -1,8 +1,6 @@
 "use strict";
-let mouseX = 0;
-let mouseY = 0;
 const split = 12;
-const adjustFontSize =1.176470588235294;
+const adjustFontSize = 1.176470588235294;
 const TargetElement = document.getElementById("app");
 
 const windowSizeCheck = () => {
@@ -18,7 +16,7 @@ const HowManyToCreate = () => {
 };
 
 const DefaultFontSize = () => {
-    return(
+    return (
         HowManyToCreate() * adjustFontSize
     )
 };
@@ -62,28 +60,28 @@ const GenerationText = () => {
 GenerationText();
 
 window.addEventListener("resize", () => {
-     for (var j = 0; j < split; j++) {
+    for (var j = 0; j < split; j++) {
         document.getElementById("G" + j).style.fontSize = DefaultFontSize() + "px";
-        }; 
+    };
 });
 
-window.addEventListener("mousemove", (event) => {
-    mouseX = event.pageX;
-    mouseY = event.pageY;
-    TargetElement.style.fontWeight = (mouseX / windowSizeCheck().width).toFixed(2) * 900;
-});
-
-
+//hover
 for (var j = 0; j < split; j++) {
-document.querySelector('#G'+ j).addEventListener("mouseover", (event) => {
-  console.log("over");
-  console.log(event.currentTarget);
-  event.currentTarget.style.fontSize = (DefaultFontSize() * 2) + "px";
-});
+    document.querySelector('#G' + j).addEventListener("mouseover", (event) => {
+        console.log("over");
+        console.log(event.currentTarget);
+        event.currentTarget.style.fontSize = (DefaultFontSize() * 2) + "px";
+        event.currentTarget.style.fontWeight = 900;
+        event.currentTarget.previousElementSibling.style.fontSize = (DefaultFontSize() / 2) + "px";
+        event.currentTarget.nextElementSibling.style.fontSize = (DefaultFontSize() / 2) + "px";
+    });
 
-document.querySelector('#G'+ j).addEventListener("mouseleave", (event) => {
-    console.log("leave");
-    console.log(event.currentTarget);
-    event.currentTarget.style.fontSize = DefaultFontSize() + "px";
-  });
+    document.querySelector('#G' + j).addEventListener("mouseleave", (event) => {
+        console.log("leave");
+        console.log(event.currentTarget);
+        event.currentTarget.style.fontSize = DefaultFontSize() + "px";
+        event.currentTarget.style.fontWeight = 100;
+        event.currentTarget.previousElementSibling.style.fontSize = DefaultFontSize() + "px";
+        event.currentTarget.nextElementSibling.style.fontSize = DefaultFontSize() + "px";
+    });
 }

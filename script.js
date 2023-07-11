@@ -2,7 +2,7 @@
 let mouseX = 0;
 let mouseY = 0;
 const split = 12;
-const adjustFontSize =1.1764;
+const adjustFontSize =1.176470588235294;
 const TargetElement = document.getElementById("app");
 
 const windowSizeCheck = () => {

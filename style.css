@@ -29,6 +29,7 @@ body {
   font-family: "Unbounded", cursive;
   letter-spacing: 0.05em;
   line-height: 85%;
+  transition: 0.25s;
 }
 
 .text {

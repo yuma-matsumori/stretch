@@ -59,6 +59,7 @@ const GenerationText = () => {
         };
     };
 };
+GenerationText();
 
 window.addEventListener("resize", () => {
      for (var j = 0; j < split; j++) {
@@ -72,7 +73,6 @@ window.addEventListener("mousemove", (event) => {
     TargetElement.style.fontWeight = (mouseX / windowSizeCheck().width).toFixed(2) * 900;
 });
 
-GenerationText();
 
 for (var j = 0; j < split; j++) {
 document.querySelector('#G'+ j).addEventListener("mouseover", (event) => {

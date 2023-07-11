@@ -1,7 +1,7 @@
 "use strict";
 let mouseX = 0;
 let mouseY = 0;
-const split = 8;
+const split = 12;
 const adjustFontSize =1.1764;
 const TargetElement = document.getElementById("app");
 
@@ -17,9 +17,15 @@ const HowManyToCreate = () => {
     )
 };
 
+const DefaultFontSize = () => {
+    return(
+        HowManyToCreate() * adjustFontSize
+    )
+};
+
 const randomSpeed = () => {
-    const max = 8000,
-        min = 4000;
+    const max = 12000,
+        min = 6000;
     let randomNum = Math.floor(Math.random() * (max - min) + min);
     return (
         randomNum
@@ -35,7 +41,7 @@ const GenerationText = () => {
         group.classList.add("group");
         group.setAttribute("id", "G" + j);
         TargetElement.appendChild(group);
-        document.getElementById("G" + j).style.fontSize = (HowManyToCreate() * adjustFontSize) + "px";
+        document.getElementById("G" + j).style.fontSize = DefaultFontSize() + "px";
         //Animation
         document.getElementById("G" + j).animate([
             { transform: 'translateX(0)' },
@@ -56,7 +62,7 @@ const GenerationText = () => {
 
 window.addEventListener("resize", () => {
      for (var j = 0; j < split; j++) {
-        document.getElementById("G" + j).style.fontSize = (HowManyToCreate() * adjustFontSize) + "px";
+        document.getElementById("G" + j).style.fontSize = DefaultFontSize() + "px";
         }; 
 });
 
@@ -68,6 +74,16 @@ window.addEventListener("mousemove", (event) => {
 
 GenerationText();
 
-window.addEventListener("mouseover", (event) => {
-    //console.log(event.target);
+for (var j = 0; j < split; j++) {
+document.querySelector('#G'+ j).addEventListener("mouseover", (event) => {
+  console.log("over");
+  console.log(event.currentTarget);
+  event.currentTarget.style.fontSize = (DefaultFontSize() * 2) + "px";
+});
+
+document.querySelector('#G'+ j).addEventListener("mouseleave", (event) => {
+    console.log("leave");
+    console.log(event.currentTarget);
+    event.currentTarget.style.fontSize = DefaultFontSize() + "px";
   });
+}

@@ -1,5 +1,6 @@
 "use strict";
 const split = 12;
+const textNum = 8;
 const adjustFontSize = 1.176470588235294;
 const TargetElement = document.getElementById("app");
 
@@ -31,9 +32,8 @@ const randomSpeed = () => {
 }
 
 const GenerationText = () => {
-    console.log("windowHeight: " + windowSizeCheck().height);
-    console.log("HowManyToCreate: " + HowManyToCreate());
-    const base = 8;
+    //console.log("windowHeight: " + windowSizeCheck().height);
+    //console.log("HowManyToCreate: " + HowManyToCreate());
     for (var j = 0; j < split; j++) {
         const group = document.createElement("div");
         group.classList.add("group");
@@ -49,7 +49,7 @@ const GenerationText = () => {
             iterations: Infinity
         });
         //text
-        for (var i = 0; i < base; i++) {
+        for (var i = 0; i < textNum; i++) {
             const TextP = document.createElement("p");
             TextP.classList.add("text");
             TextP.textContent = "Bimyoo/YumaMatsumori/";
@@ -68,20 +68,28 @@ window.addEventListener("resize", () => {
 //hover
 for (var j = 0; j < split; j++) {
     document.querySelector('#G' + j).addEventListener("mouseover", (event) => {
-        console.log("over");
-        console.log(event.currentTarget);
         event.currentTarget.style.fontSize = (DefaultFontSize() * 2) + "px";
         event.currentTarget.style.fontWeight = 900;
-        event.currentTarget.previousElementSibling.style.fontSize = (DefaultFontSize() / 2) + "px";
-        event.currentTarget.nextElementSibling.style.fontSize = (DefaultFontSize() / 2) + "px";
+        try {
+            event.currentTarget.previousElementSibling.style.fontSize = (DefaultFontSize() / 2) + "px";
+        }catch(e){
+        };
+        try {
+            event.currentTarget.nextElementSibling.style.fontSize = (DefaultFontSize() / 2) + "px";
+        }catch(e){
+        };
     });
 
     document.querySelector('#G' + j).addEventListener("mouseleave", (event) => {
-        console.log("leave");
-        console.log(event.currentTarget);
         event.currentTarget.style.fontSize = DefaultFontSize() + "px";
         event.currentTarget.style.fontWeight = 100;
-        event.currentTarget.previousElementSibling.style.fontSize = DefaultFontSize() + "px";
-        event.currentTarget.nextElementSibling.style.fontSize = DefaultFontSize() + "px";
+        try {
+            event.currentTarget.previousElementSibling.style.fontSize = DefaultFontSize() + "px";
+        }catch(e){
+        };
+        try {
+            event.currentTarget.nextElementSibling.style.fontSize = DefaultFontSize() + "px";
+        }catch(e){
+        };
     });
 }
